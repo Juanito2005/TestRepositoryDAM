@@ -31,7 +31,7 @@ private decimal CalcularTotal(Pedido pedido)
 {
     decimal total = pedido.Items.Sum(item => item.Precio * item.Cantidad);
 
-    if (pedido.Cliente.EsVIP)  // Agrupé el calcular total y el de si cliente es VIP en uno solo
+    if (pedido.Cliente.EsVIP)
         total *= 0.9m; // 10% de descuento
 
     return decimal.Round(total, 2);
