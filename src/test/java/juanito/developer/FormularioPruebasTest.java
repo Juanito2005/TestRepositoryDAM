@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
 
-public class MainTest {
+public class FormularioPruebasTest {
 
     @Test
     void testMain() {
@@ -15,7 +15,7 @@ public class MainTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(baos));
-        Main.main(new String[]{});
+        InventarioPruebas.main(new String[]{});
 
         System.setOut(originalOut);
         // Se comprueba que el String de salida sea el mismo que el del test
@@ -30,13 +30,13 @@ public class MainTest {
         // Test básico
         int[] inventarioActu = {10, 20 ,30, 40, 55};
         int[] inventarioOri = {10, 20, 30, 40, 50};
-        Main.actualizarInventario(inventarioOri, 4, 5);
+        InventarioPruebas.actualizarInventario(inventarioOri, 4, 5);
         assertArrayEquals(inventarioActu, inventarioOri);
 
         // Prueba con cantidades negativas
         int[] inventarioActu2 = {10, 20 ,29, 40, 50};
         int[] inventarioOri1 = {10, 20, 30, 40, 50};
-        Main.actualizarInventario(inventarioOri1, 2, -1);
+        InventarioPruebas.actualizarInventario(inventarioOri1, 2, -1);
         assertArrayEquals(inventarioActu2, inventarioOri1);
 
         // Se comprueba que actualice el índice esperado
@@ -44,12 +44,12 @@ public class MainTest {
 
         // Se comprueba que ignora índices por encima de límite :)
         int[] inventarioOriginal = {10, 20, 30, 40, 55};
-        Main.actualizarInventario(inventarioOriginal, 5, 20);
+        InventarioPruebas.actualizarInventario(inventarioOriginal, 5, 20);
         assertArrayEquals(inventarioActu, inventarioOriginal);
 
         // Se comprueba que igora índices por debajo de límite :(
         int[] inventarioOriginal2 = {10, 20, 30, 40, 55};
-        Main.actualizarInventario(inventarioOriginal, -1, 20);
+        InventarioPruebas.actualizarInventario(inventarioOriginal, -1, 20);
         assertArrayEquals(inventarioActu, inventarioOriginal2);
     }
 
@@ -68,33 +68,33 @@ public class MainTest {
         int[] inventario3 = { };
         int[] inventario4 = {1};
         int[] inventario5 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-        assertEquals(15, Main.calcularTotal(inventario));
-        assertNotEquals(13, Main.calcularTotal(inventario));
+        assertEquals(15, InventarioPruebas.calcularTotal(inventario));
+        assertNotEquals(13, InventarioPruebas.calcularTotal(inventario));
 
         // Suma con negativos
-        assertEquals(5, Main.calcularTotal(inventario2));
+        assertEquals(5, InventarioPruebas.calcularTotal(inventario2));
 
         // Suma de un array vacío
-        assertEquals(0, Main.calcularTotal(inventario3));
+        assertEquals(0, InventarioPruebas.calcularTotal(inventario3));
 
         // Suma de un único elemento
-        assertEquals(1, Main.calcularTotal(inventario4));
+        assertEquals(1, InventarioPruebas.calcularTotal(inventario4));
 
         // Suma de multiples elementos
-        assertEquals(20, Main.calcularTotal(inventario5));
+        assertEquals(20, InventarioPruebas.calcularTotal(inventario5));
     }
 
     @Test
     void testEncontrarProductoMasCaro() {
         int[] inventario = {10, 20, 30, 40, 50, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 60, 51};
-        assertEquals(60, Main.encontrarProductoMasCaro(inventario));
+        assertEquals(60, InventarioPruebas.encontrarProductoMasCaro(inventario));
 
         // Prueba con numeros del mismo valor
         int[] inventario1 = {5, 5, 5, 5, 5};
-        assertEquals(5, Main.encontrarProductoMasCaro(inventario1));
+        assertEquals(5, InventarioPruebas.encontrarProductoMasCaro(inventario1));
 
         // Prueba con numeros negativos
         int[] inventario2 = {-5, -5, -5, -5, -5, -3};
-        assertEquals(-3, Main.encontrarProductoMasCaro(inventario2));
+        assertEquals(-3, InventarioPruebas.encontrarProductoMasCaro(inventario2));
     }
 }

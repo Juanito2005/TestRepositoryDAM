@@ -1,5 +1,5 @@
 package juanito.developer;
-public class Main {
+public class InventarioPruebas {
     public static void main(String[] args) {
         int[] inventario = {10, 20, 30, 40, 50};
         System.out.println("Total de inventario:" + calcularTotal(inventario));
